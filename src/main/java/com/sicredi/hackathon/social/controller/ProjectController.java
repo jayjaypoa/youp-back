@@ -30,6 +30,11 @@ public class ProjectController {
         return projectService.edit(request);
     }
 
+    @PutMapping("/favorite/{id}")
+    public ResponseEntity favorite(@RequestHeader(value = "Authorization", required = false) final String username, @PathVariable("id") final Long id) {
+        return projectService.favorite(id, username);
+    }
+
     @GetMapping
     public List<ProjectEntity> findProjectsByUserLogged(@RequestHeader("Authorization") String username) {
         return projectService.findProjectsByUserLogged(username);

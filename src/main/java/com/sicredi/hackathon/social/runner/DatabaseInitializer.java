@@ -58,7 +58,7 @@ public class DatabaseInitializer implements ApplicationRunner {
                 .description("Coisas legais pra escrever aqui")
                 .title("Coisa Legal")
                 .category(ProjectCategory.Artes)
-                .users(Arrays.asList(betinho, bianca))
+//                .users(Arrays.asList(betinho, bianca))
                 .build());
 
         ProjectEntity petFriendly = projectRepository.save(ProjectEntity.builder()
@@ -66,7 +66,7 @@ public class DatabaseInitializer implements ApplicationRunner {
                 .description("Animais são legalzinhos")
                 .title("Pet Life")
                 .category(ProjectCategory.Animais)
-                .users(Arrays.asList(betinho, marquinhos))
+//                .users(Arrays.asList(betinho, marquinhos))
                 .build());
 
     }

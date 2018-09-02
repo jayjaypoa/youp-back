@@ -70,5 +70,15 @@ public class ProjectService {
         UserEntity user = userService.findUserByEmail(email);
         return projectRepository.findAllByUsersContains(user);
     }
+
+    public ResponseEntity favorite(Long id, String email) {
+        UserEntity user = userService.findUserByEmail(email);
+        ProjectEntity project = projectRepository.findById(id).orElseThrow(NotFoundException::new);
+
+        project.getUsers().add(user);
+        projectRepository.save(project);
+
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
 }
 
