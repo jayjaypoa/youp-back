@@ -5,6 +5,7 @@ import com.sicredi.hackathon.social.dto.request.RegisterUserRequest;
 import com.sicredi.hackathon.social.dto.response.LoginResponse;
 import com.sicredi.hackathon.social.entity.UserEntity;
 import com.sicredi.hackathon.social.exception.status.AttemptLoginException;
+import com.sicredi.hackathon.social.exception.status.InternalServerErrorException;
 import com.sicredi.hackathon.social.exception.status.NotFoundException;
 import com.sicredi.hackathon.social.repository.ProjectRepository;
 import com.sicredi.hackathon.social.repository.UserRepository;
@@ -36,7 +37,7 @@ public class UserService {
     }
 
     public UserEntity findUserByEmail(final String email) {
-        return userRepository.findByEmail(email).orElseThrow(NotFoundException::new);
+        return userRepository.findByEmail(email).orElseThrow(InternalServerErrorException::new);
     }
 
     public LoginResponse login(final LoginRequest request) {

@@ -3,10 +3,12 @@ package com.sicredi.hackathon.social.controller;
 
 import com.sicredi.hackathon.social.dto.request.EditProjectRequest;
 import com.sicredi.hackathon.social.dto.request.RegisterProjectRequest;
+import com.sicredi.hackathon.social.dto.request.RegisterUserRequest;
 import com.sicredi.hackathon.social.dto.response.RegisterProjectResponse;
 import com.sicredi.hackathon.social.entity.ProjectEntity;
 import com.sicredi.hackathon.social.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +22,10 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @PostMapping
-    public RegisterProjectResponse registerProject(@RequestHeader(value = "Authorization", required = false) final String username, @RequestBody final RegisterProjectRequest request) {
+    //@PostMapping
+    //public RegisterProjectResponse registerProject(@RequestHeader(value = "Authorization", required = false) final String username, @RequestBody final RegisterProjectRequest request) {
+    @RequestMapping(value = "/inserir", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Void> registerProject(@RequestBody RegisterUserRequest request) {
         return projectService.register(request);
     }
 
